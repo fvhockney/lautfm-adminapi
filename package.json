@@ -1,6 +1,6 @@
 {
   "name": "lautfm-adminapi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JS wrapper for admin laut.fm api",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "keywords": [
-      "lautfm"
+    "lautfm"
   ],
   "repository": "github:fvhockney/lautfm-adminapi",
   "jest": {
