@@ -7,6 +7,10 @@
     "build": "npx babel src -d lib",
     "test": "jest"
   },
+  "keywords": [
+      "lautfm"
+  ],
+  "repository": "github:fvhockney/lautfm-adminapi",
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
