@@ -4,8 +4,12 @@
   "description": "JS wrapper for admin laut.fm api",
   "main": "./lib/index.js",
   "scripts": {
+    "build:docs": "npx documentation build src/** -f html -o docs",
     "build": "npx babel src -d lib",
-    "test": "jest"
+    "test": "jest",
+    "preversion": "npm run test",
+    "version": "npm run build && npm run build:docs && git add .",
+    "postversion": "get push && git push --tags && npm publish"
   },
   "keywords": [
     "lautfm"
@@ -25,6 +29,7 @@
     "@babel/preset-env": "^7.3.4",
     "axios": "^0.18.0",
     "babel-jest": "^24.3.1",
+    "documentation": "^9.3.1",
     "jest": "^24.3.1"
   },
   "peerDependencies": {
