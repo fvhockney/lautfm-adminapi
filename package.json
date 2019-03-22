@@ -1,6 +1,6 @@
 {
   "name": "lautfm-adminapi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "JS wrapper for admin laut.fm api",
   "main": "./lib/index.js",
   "scripts": {
