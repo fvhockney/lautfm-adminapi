@@ -18,20 +18,28 @@ it('sets the token', () => {
 
 it('gets station nick(3161)', async () => {
     const c = AdminApi()
+    c.token = token
+    c.origin = origin
     const { data } = await c.station(3161).get()
     expect(data.id).toBe(3161)
 })
 
 it('gets users', async() =>{
-    const {data} = await AdminApi()
+    const c = AdminApi()
+    c.token = token
+    c.origin = origin
+    const {data} = await c
                         .station(3161)
                         .get('users')
     expect(data.users).toEqual(expect.any(Array))
 })
 
 it('runs promise all', () =>{
-    const p1 = AdminApi().station(3161).get()
-    const p2 = AdminApi().station(3755).get()
+    const c = AdminApi()
+    c.token = token
+    c.origin = origin
+    const p1 = c.station(3161).get()
+    const p2 = c.station(3755).get()
     return Promise.all( [ p1, p2 ] )
         .then( (resp) => {
             const[r1, r2] = resp
