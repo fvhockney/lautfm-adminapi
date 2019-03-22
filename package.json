@@ -9,7 +9,7 @@
     "test": "jest",
     "preversion": "npm run test",
     "version": "npm run build && npm run build:docs && git add .",
-    "postversion": "get push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish"
   },
   "keywords": [
     "lautfm"
