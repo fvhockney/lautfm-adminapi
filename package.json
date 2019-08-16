@@ -2,14 +2,16 @@
   "name": "lautfm-adminapi",
   "version": "0.0.6",
   "description": "JS wrapper for admin laut.fm api",
-  "main": "./lib/index.js",
+  "main": "cjs/",
+  "module": "esm/",
   "scripts": {
-    "build:docs": "npx documentation build src/** -f html -o docs",
-    "build": "npx babel src -d lib",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "npx babel --delete-dir-on-start --env-name cjs -d cjs/ src/",
+    "docs": "npx documentation build src/** -f html -o docs",
     "test": "jest",
     "preversion": "npm run test",
-    "version": "npm run build && npm run build:docs && git add .",
-    "postversion": "git push && git push --tags && npm publish"
+    "version": "git add .",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "lautfm"
@@ -20,17 +22,24 @@
       "^.+\\.js$": "babel-jest"
     }
   },
+  "browserslist": [
+    ">1%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
+  ],
   "author": "Vern Hockney <vern@laut.fm>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/preset-env": "^7.3.4",
-    "axios": "^0.18.0",
-    "babel-jest": "^24.3.1",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "axios": "^0.18.1",
+    "babel-jest": "^24.9.0",
     "documentation": "^9.3.1",
-    "jest": "^24.3.1"
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.3"
   },
   "peerDependencies": {
     "axios": "^0.18.0",

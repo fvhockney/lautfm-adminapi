@@ -1,0 +1,5 @@
+src/
+.travis.yml
+tests/
+docs/
+publish

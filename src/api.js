@@ -1,5 +1,8 @@
 import {query} from './query'
 
+/**
+ * @deprecated
+ */
 export const stationData = async function ( stationId ) {
     const data = await query( 'get', `${stationId}` )
     let { name, description, format, djs, logo_image_url:logoUrl, background_image_url:backgroundUrl, location, website, facebook_page:facebook,
