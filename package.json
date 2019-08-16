@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "npx babel --delete-dir-on-start --env-name cjs -d cjs/ src/",
+    "build:cjs": "npx babel --delete-dir-on-start -d esm/ src/",
     "docs": "npx documentation build src/** -f html -o docs",
     "test": "jest",
     "preversion": "npm run test",
