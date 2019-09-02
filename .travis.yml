@@ -1,9 +1,5 @@
 language: node_js
 
-branches:
-  only:
-    - master
-
 env:
   - TRAVIS_TAG="(git tag -l --points-at HEAD)"
 
