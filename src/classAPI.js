@@ -80,6 +80,7 @@ class AdminApiClass extends AdminApiConfig {
     constructor () {
         super()
         this.data = {}
+        this.config = {}
         this.apiStation = null
         this.api = axios.create({
             baseURL: this.baseURL
@@ -96,7 +97,7 @@ class AdminApiClass extends AdminApiConfig {
      */
     get ( path = '' ) {
         this._resetData()
-        return this.api.get( this._path(path) )
+        return this.api.get( this._path(path), this.config )
     }
 
     /**
@@ -106,7 +107,7 @@ class AdminApiClass extends AdminApiConfig {
      * @returns {Promise} the promise of the post request
      */
     post ( path = '' ) {
-        return this.api.post( this._path(path), this.data )
+        return this.api.post( this._path(path), this.data, this.config )
     }
 
     /**
@@ -115,7 +116,7 @@ class AdminApiClass extends AdminApiConfig {
      * @returns {Promise} the promise of the patch request
      */
     patch ( path = '' ) {
-        return this.api.patch( this._path(path), this.data )
+        return this.api.patch( this._path(path), this.data, this.config )
     }
 
     /**
@@ -124,7 +125,7 @@ class AdminApiClass extends AdminApiConfig {
      * @returns {Promise} the promise of the put request
      */
     put ( path = '' ) {
-        return this.api.put( this._path(path), this.data )
+        return this.api.put( this._path(path), this.data, this.config )
     }
 
     /**
@@ -134,7 +135,7 @@ class AdminApiClass extends AdminApiConfig {
      */
     options ( path = '' ) {
         this._resetData()
-        return this.api.options( this._path(path) )
+        return this.api.options( this._path(path), this.config )
     }
 
     /**
@@ -144,7 +145,7 @@ class AdminApiClass extends AdminApiConfig {
      */
     delete ( path = '' ) {
         this._resetData()
-        return this.api.delete( this._path(path) )
+        return this.api.delete( this._path(path), this.config )
     }
 
     /**
@@ -171,6 +172,32 @@ class AdminApiClass extends AdminApiConfig {
     }
 
     /**
+     * Provides the function which should be called during the
+     * download to acess the progressEvent
+     * @param {function} fun - the function to be called
+     * @returns {object} this
+     * @TODO: test
+     */
+    onDownProgress( fun ) {
+        this.config.onDownloadProgress = fun
+        return this
+    }
+
+    /**
+     * Provides the function which should be called during the
+     * upload to acess the progressEvent
+     * @param {function} fun - the function to be called
+     * @returns {object} this
+     * @TODO: test
+     */
+    onUpProgress( fun ) {
+        this.config.onUploadProgress = fun
+        return this
+    }
+
+
+
+    /**
      * Standardizes the building of the path for
      * the api call
      * @private
@@ -181,7 +208,7 @@ class AdminApiClass extends AdminApiConfig {
     _path ( path ) {
         let builtPath = ''
         if (this.apiStation) {
-           builtPath += `${this.apiStation}` 
+           builtPath += `${this.apiStation}`
         }
 
         if (path) {
