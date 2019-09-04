@@ -176,7 +176,6 @@ class AdminApiClass extends AdminApiConfig {
      * download to acess the progressEvent
      * @param {function} fun - the function to be called
      * @returns {object} this
-     * @TODO: test
      */
     onDownProgress( fun ) {
         this.config.onDownloadProgress = fun
@@ -188,7 +187,6 @@ class AdminApiClass extends AdminApiConfig {
      * upload to acess the progressEvent
      * @param {function} fun - the function to be called
      * @returns {object} this
-     * @TODO: test
      */
     onUpProgress( fun ) {
         this.config.onUploadProgress = fun

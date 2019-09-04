@@ -48,3 +48,15 @@ it('runs promise all', () =>{
         } )
 })
 
+it( 'runs a download progress', async () => {
+    let progressCalled = false
+    const log = (progressEvent) => {
+        progressCalled = (progressEvent !== undefined)
+    }
+    const c = AdminApi()
+    c.token = token
+    c.origin = origin
+    await c.station(3161).onDownProgress(log).get()
+    expect(progressCalled).toEqual(true)
+} )
+
