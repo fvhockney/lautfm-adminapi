@@ -85,6 +85,7 @@ class AdminApiClass extends AdminApiConfig {
         this.api = axios.create({
             baseURL: this.baseURL
         })
+        this._cancelToken = {}
         this._token()
         return this
     }
@@ -193,7 +194,29 @@ class AdminApiClass extends AdminApiConfig {
         return this
     }
 
+    /**
+     * Tells the request that it should be cancelable
+     * @returns {object} this
+     */
+    cancelable(fun) {
+        if ( fun === undefined ) {
+            const source = axios.CancelToken.source();
+            this._cancelToken = source
+            this.config.cancelToken = source.token
+        } else {
+            this.config.cancelToken = new axios.CancelToken( fun )
+        }
+        return this
+    }
 
+    /**
+     * Cancels the particular request
+     * @param {string} message - the message passed to the
+     *                 cancel constructor
+     */
+    cancel(message) {
+        this._cancelToken.cancel(message)
+    }
 
     /**
      * Standardizes the building of the path for
