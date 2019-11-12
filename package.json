@@ -1,6 +1,6 @@
 {
   "name": "lautfm-adminapi",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "JS wrapper for admin laut.fm api",
   "main": "cjs/",
   "module": "esm/",
