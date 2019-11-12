@@ -249,6 +249,6 @@ class AdminApiClass extends AdminApiConfig {
     }
 }
 
-const AdminApi = () => { return new AdminApiClass() }
+const AdminApi = ( config = {} ) => { return new AdminApiClass( config ) }
 
 export { AdminApi, AdminApiClass }
