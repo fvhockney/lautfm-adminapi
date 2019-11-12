@@ -6,9 +6,9 @@ class AdminApiConfig {
     /**
      * Create the basic configuration requirments
      */
-    constructor () {
-        this.defaultToken = null
-        this.defaultOrigin = null
+    constructor ( { token = null, origin = null } ) {
+        this.defaultToken = token
+        this.defaultOrigin = token
         this.baseURL = 'https://api.radioadmin.laut.fm/stations/'
     }
 
@@ -77,8 +77,8 @@ class AdminApiClass extends AdminApiConfig {
      * Creates the http request instance
      * @ returns {object} this
      */
-    constructor () {
-        super()
+    constructor ( adminApiConfig = {} ) {
+        super( adminApiConfig )
         this.data = {}
         this.config = {}
         this.apiStation = null
