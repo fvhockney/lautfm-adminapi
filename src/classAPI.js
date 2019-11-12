@@ -86,7 +86,7 @@ class AdminApiClass extends AdminApiConfig {
             baseURL: this.baseURL
         })
         this._cancelToken = {}
-        this._token()
+        this._token( this.defaultToken )
         return this
     }
 
