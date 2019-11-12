@@ -19,7 +19,7 @@ it('sets the token', () => {
 })
 
 it( 'sets token in class', () => {
-    const c = new AdminApiClass( { token: 'foo' } )
+    const c = AdminApi( { token: 'foo' } )
     expect( c.defaultToken ).toEqual( 'foo' )
 } )
 
