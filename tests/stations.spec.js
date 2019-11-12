@@ -19,6 +19,7 @@ it('sets the token', () => {
 })
 
 it( 'sets token in class', () => {
+    log(window.localStorage)
     const c = AdminApi( { token: 'foo' } )
     expect( c.defaultToken ).toEqual( 'foo' )
 } )
