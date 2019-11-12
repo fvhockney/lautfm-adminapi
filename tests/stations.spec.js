@@ -1,6 +1,6 @@
 import '@babel/polyfill'
 
-import { AdminApi } from '../src/classAPI.js'
+import { AdminApi, AdminApiClass } from '../src/classAPI.js'
 import { token, origin } from './token.js'
 
 function log(v) { console.log(v); return }
@@ -17,6 +17,11 @@ it('sets the token', () => {
     c.token = token
     c.origin = origin
 })
+
+it( 'sets token in class', () => {
+    const c = new AdminApiClass( { token: 'foo' } )
+    expect( c.defaultToken ).toEqual( 'foo' )
+} )
 
 it('gets station nick(3161)', async () => {
     const c = AdminApi()
