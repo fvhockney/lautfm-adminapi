@@ -145,8 +145,11 @@ class AdminApiClass extends AdminApiConfig {
      * @returns {Promise} the promise of the delete request
      */
     delete ( path = '' ) {
+        let config
+        if ( Object.keys( this.data ).length ) config = { ...this.config, ...{ data: this.data } }
+        else config = this.config
         this._resetData()
-        return this.api.delete( this._path(path), this.config )
+        return this.api.delete( this._path(path), config )
     }
 
     /**
