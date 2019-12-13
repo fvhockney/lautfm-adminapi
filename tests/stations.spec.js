@@ -96,6 +96,16 @@ it('cancels a request with custom function', () => {
     } )
 })
 
+it( 'deletes a tag', async () => {
+    const c = AdminApi()
+    c.token = token
+    c.origin = origin
+    const {data} = await c.station(8583).with( { tags: ['b'] } ).post( 'tracks/292349/tags' )
+    expect( data.tracks[0].tags.includes( 'b' ) ).toEqual(true)
+    const { data:data2 } = await c.station(8583).with( { tags: ['b'] } ).delete('tracks/292349/tags')
+    expect( data2.tracks[0].tags.includes( 'b' ) ).toEqual(false)
+} )
+
 function reflect(promise) {
     return promise
         .then(v => {
