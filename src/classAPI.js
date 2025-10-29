@@ -6,10 +6,10 @@ class AdminApiConfig {
     /**
      * Create the basic configuration requirments
      */
-    constructor ( { token = null, origin = null } ) {
+    constructor ( { token = null, origin = null, baseUrl = 'https://api.radioadmin.laut.fm/stations/' } ) {
         this.defaultToken = token
-        this.defaultOrigin = token
-        this.baseURL = 'https://api.radioadmin.laut.fm/stations/'
+        this.defaultOrigin = origin
+        this.baseURL = baseUrl
     }
 
     /**
